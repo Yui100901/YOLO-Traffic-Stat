@@ -1,0 +1,12 @@
+#MySQL
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://${host}:3306/${database}?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
+    username: ${username}
+    password: ${password}
+    druid:
+      initial-size: 20
+      min-idle: 10
+      max-active: 100
+

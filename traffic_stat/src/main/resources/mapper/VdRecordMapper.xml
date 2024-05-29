@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yui.traffic_stat.infrastructure.mapper.VdRecordMapper">
+
+    <resultMap id="BaseResultMap" type="com.yui.traffic_stat.infrastructure.entity.VdRecord">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="creator" column="creator" jdbcType="VARCHAR"/>
+            <result property="modifier" column="modifier" jdbcType="VARCHAR"/>
+            <result property="created" column="created" jdbcType="TIMESTAMP"/>
+            <result property="modified" column="modified" jdbcType="TIMESTAMP"/>
+            <result property="isDeleted" column="is_deleted" jdbcType="INTEGER"/>
+            <result property="deviceId" column="device_id" jdbcType="BIGINT"/>
+            <result property="vehicleType" column="vehicle_type" jdbcType="INTEGER"/>
+            <result property="vehicleInNumber" column="vehicle_in_number" jdbcType="INTEGER"/>
+            <result property="vehicleOutNumber" column="vehicle_out_number" jdbcType="INTEGER"/>
+            <result property="granularity" column="granularity" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,creator,modifier,
+        created,modified,is_deleted,
+        device_id,vehicle_type,vehicle_in_number,
+        vehicle_out_number,granularity
+    </sql>
+
+    <insert id="batchInsert" parameterType="java.util.List">
+        insert into vd_record(
+        creator,modifier,
+        created,modified,is_deleted,
+        device_id,vehicle_type,vehicle_in_number,
+        vehicle_out_number,granularity
+        ) values
+        <foreach collection="vdRecordList" item="vdRecord" separator=",">
+            (#{vdRecord.creator},#{vdRecord.modifier},
+             #{vdRecord.created},#{vdRecord.modified},#{vdRecord.isDeleted},
+             #{vdRecord.deviceId},#{vdRecord.vehicleType},#{vdRecord.vehicleInNumber},
+             #{vdRecord.vehicleOutNumber},#{vdRecord.granularity})
+        </foreach>
+    </insert>
+
+    <select id="selectOneDayData" resultMap="BaseResultMap">
+        select
+        id,creator,modifier,
+        created,modified,is_deleted,
+        device_id,vehicle_type,vehicle_in_number,
+        vehicle_out_number,granularity from vd_record
+        WHERE DATE(created) = #{day}
+    </select>
+</mapper>

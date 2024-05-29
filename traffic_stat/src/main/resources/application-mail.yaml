@@ -1,0 +1,15 @@
+#发送邮件
+spring:
+  mail:
+    #smtp.qq.com为QQ邮箱
+    host: smtp.qq.com
+    username: ${mail-server.username} #邮箱号
+    password: ${mail-server.password} #授权码
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+    default-encoding: UTF-8

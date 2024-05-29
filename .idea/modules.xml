@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/YOLO-Traffic-Stat.iml" filepath="$PROJECT_DIR$/YOLO-Traffic-Stat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/traffic_detection_server/traffic_detection_server.iml" filepath="$PROJECT_DIR$/traffic_detection_server/traffic_detection_server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/traffic_stat_web.iml" filepath="$PROJECT_DIR$/traffic_stat_web.iml" />
+    </modules>
+  </component>
+</project>
